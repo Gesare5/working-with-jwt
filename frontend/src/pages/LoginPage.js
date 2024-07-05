@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
+import Header from '../components/Header';
 
 const LoginPage = () => {
     let { loginUser } = useContext(AuthContext);
@@ -26,6 +27,7 @@ const LoginPage = () => {
 
     return (
         <div>
+            <Header />
             <form onSubmit={userSubmit}>
                 <input type='text' name='username' placeholder='Enter username' value={loginInfo.username} onChange={handleOnChange} />
                 <input type='password' name='password' placeholder='Enter Password' value={loginInfo.password} onChange={handleOnChange} />
