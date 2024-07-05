@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 
 const LoginPage = () => {
+    let { loginUser } = useContext(AuthContext);
     const [loginInfo, setLoginInfo] = useState({
         username: '',
         password: ''
@@ -15,12 +16,11 @@ const LoginPage = () => {
         });
     };
 
-    let { loginUser } = useContext(AuthContext);
 
     const userSubmit = (e) => {
         e.preventDefault();
         if (loginInfo.username && loginInfo.password) {
-            loginUser(loginInfo.username, loginInfo.password)
+            loginUser(loginInfo)
         }
     }
 
