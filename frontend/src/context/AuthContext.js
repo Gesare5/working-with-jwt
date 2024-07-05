@@ -12,15 +12,15 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
 
-    const loginUser = async (name, pass) => {
+    const loginUser = async (logininfo) => {
         // e.preventDefault();
         console.log('form submitted')
         let response = await fetch('http://127.0.0.1:8000/api/token/', {
             method: 'POST',
-            Headers: {
+            headers: {
                 'Content-Type': 'application/json'
             },
-            body: { 'username': name, 'password': pass }
+            body: JSON.stringify({ ...logininfo })
         })
         let data = await response.json()
         console.log(response)
