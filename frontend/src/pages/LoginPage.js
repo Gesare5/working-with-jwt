@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     let { loginUser } = useContext(AuthContext);
     const [loginInfo, setLoginInfo] = useState({
         username: '',
         password: ''
     });
-
     const handleOnChange = (evt) => {
         const { name, value } = evt.target;
         setLoginInfo({
@@ -21,7 +22,7 @@ const LoginPage = () => {
     const userSubmit = (e) => {
         e.preventDefault();
         if (loginInfo.username && loginInfo.password) {
-            loginUser(loginInfo)
+            loginUser(loginInfo, navigate)
         }
     }
 
